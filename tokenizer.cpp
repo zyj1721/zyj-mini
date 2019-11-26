@@ -88,25 +88,31 @@ namespace miniplc0 {
 					case '-':
 						// 请填空：切换到减号的状态
 						current_state = DFAState::MINUS_SIGN_STATE;
+						break;
 					case '+':
 						// 请填空：切换到加号的状态
 						current_state = DFAState::PLUS_SIGN_STATE;
+						break;
 					case '*':
 						// 请填空：切换状态
 						current_state = DFAState::MULTIPLICATION_SIGN_STATE;
+						break;
 					case '/':
 						// 请填空：切换状态
 						current_state = DFAState::DIVISION_SIGN_STATE;
-
+						break;
 					///// 请填空：
 					///// 对于其他的可接受字符
 					///// 切换到对应的状态
 					case '(':
 					    current_state = DFAState::LEFTBRACKET_STATE;
+						break;
 					case ')':
 					    current_state = DFAState::RIGHTBRACKET_STATE;
+						break;
 					case ';':
 					    current_state = DFAState::SEMICOLON_STATE;
+						break;
 					// 不接受的字符导致的不合法的状态
 					default:
 						invalid = true;
@@ -182,7 +188,7 @@ namespace miniplc0 {
 					else if (tmp == "print")
 					return std::make_pair(std::make_optional<Token>(TokenType::PRINT, tmp, pos, currentPos()), std::optional<CompilationError>());
 					else 
-					return std::make_pair(std::make_optional<Token>(TokenType::IDENTIFIER_STATE, tmp, pos, currentPos()), std::optional<CompilationError>());
+					return std::make_pair(std::make_optional<Token>(TokenType::IDENTIFIER, tmp, pos, currentPos()), std::optional<CompilationError>());
 				}  
 				// 如果读到的是字符或字母，则存储读到的字符
 				else if (miniplc0::isalpha(current_char.value())||miniplc0::isdigit(current_char.value()))
@@ -204,7 +210,7 @@ namespace miniplc0 {
 					else if (tmp == "print")
 					return std::make_pair(std::make_optional<Token>(TokenType::PRINT, tmp, pos, currentPos()), std::optional<CompilationError>());
 					else 
-					return std::make_pair(std::make_optional<Token>(TokenType::IDENTIFIER_STATE, tmp, pos, currentPos()), std::optional<CompilationError>());
+					return std::make_pair(std::make_optional<Token>(TokenType::IDENTIFIER, tmp, pos, currentPos()), std::optional<CompilationError>());
 				}
 				break;
 			}
