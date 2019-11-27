@@ -117,11 +117,23 @@ TEST_CASE("assign", "[valid]") {
     miniplc0::Tokenizer tkz(ss);
     auto tokens = tkz.AllTokens();
     if (tokens.second.has_value())
+    {
+        std::cout << "tokenizer fail\n";
+        std::cout << "Code: " << tokens.second.value().GetCode() << "\n";
+        auto pos = tokens.second.value().GetPos();
+        std::cout << "Pos: " << pos.first << ", " << pos.second << "\n";
         FAIL();
+    }
     miniplc0::Analyser analyser(tokens.first);
     auto instructions = analyser.Analyse();
     if (instructions.second.has_value())
+    {
+        std::cout << "analyzer fail\n";
+        std::cout << "Code: " << instructions.second.value().GetCode() << "\n";
+        auto pos = instructions.second.value().GetPos();
+        std::cout << "Pos: " << pos.first << ", " << pos.second << "\n";
         FAIL();
+    }
     miniplc0::VM vm(instructions.first);
     std::vector<int32_t> writes = vm.Run();
     std::vector<int32_t> output = {};
