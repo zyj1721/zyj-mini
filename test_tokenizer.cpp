@@ -146,7 +146,7 @@ TEST_CASE("integers", "[valid]") {
 		FAIL();
 	for (int i = 0; i < result.first.size(); i++)
 	{
-		std::cout << result.first[i].GetValueString() << "\n";
+		std::cout << result.first[i].value().GetValueString() << "\n";
 	}
 	std::vector<miniplc0::Token> output = {};
 	output.emplace_back(miniplc0::Token(miniplc0::TokenType::UNSIGNED_INTEGER, 0, 			0, 0, 0, 1));
